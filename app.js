@@ -1,4 +1,4 @@
-let numGuess = Math.round(Math.random() * 100);
+let numGuess = Math.floor(Math.random() * 100) + 1;
 
 let noGuess = [];
 
@@ -6,7 +6,10 @@ document.querySelector("#guess").onclick = function() {
     const num = document.querySelector("#num").value;
     noGuess.push(num);
 
-    if(num > numGuess) {
+    if(num == "") {
+        alert("Please enter a number");
+        noGuess.pop(num);
+    } else if(num > numGuess) {
         document.querySelector("#level").innerHTML = "Your guess is too high."
         document.querySelector("#noGuesses").innerHTML = "No. Of Guesses: " + (noGuess.length);
         document.querySelector("#guessedNum").innerHTML = "Guessed Numbers are: " + noGuess;
@@ -19,6 +22,5 @@ document.querySelector("#guess").onclick = function() {
         document.querySelector("#noGuesses").innerHTML = "The number was: " + numGuess;
         document.querySelector("#guessedNum").innerHTML = "You guessed it in " + noGuess.length + " guesses";
     }
-
 }
 
